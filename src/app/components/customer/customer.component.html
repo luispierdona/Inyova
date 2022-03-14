@@ -1,3 +1,44 @@
-<app-tool-bar></app-tool-bar>
+<!-- <app-tool-bar></app-tool-bar> -->
 
-<app-customer-data-form></app-customer-data-form>
+<!-- <div fxLayout="row wrap" fxLayoutAlign="center center" class="customer-page"> -->
+
+<!-- <div fxLayout="row wrap" fxLayout.sm="column" fxLayout.xs="column">
+  
+  <div fxFlex="100%">
+    <h2>{{ 'Personal Information' }}</h2>
+  </div>
+
+  <div fxFlex="100%">
+    <app-customer-data-form></app-customer-data-form>
+  </div>
+
+</div> -->
+
+<!-- <div fxLayout="row wrap" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column">
+  <h2 fxFlex="100%" fxLayoutAlign="center center">{{ 'Personal Information' }}</h2>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
+
+    <mat-card>
+      <mat-card-content>
+        <app-customer-data-form></app-customer-data-form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div> -->
+
+<div fxFlex fxLayout="row wrap" fxLayoutAlign="center center" fxLayout.sm="column" fxLayout.xs="column">
+  <!-- Left Column, Top Row -->
+  <h1 fxFlex.gt-sm="100%" fxLayoutAlign="center center">{{ 'Personal Information' }}</h1>
+  <div fxFlex.gt-sm="50%">
+    <!-- Right Column, Bottom Row -->
+    <mat-card>
+      <mat-card-content>
+        <app-customer-data-form></app-customer-data-form>
+      </mat-card-content>
+    </mat-card>
+
+    <button mat-stroked-button class="btnContinue">{{ 'Continue' }}</button>
+  </div>
+</div>

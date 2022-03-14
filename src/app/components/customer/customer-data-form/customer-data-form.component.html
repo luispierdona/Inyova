@@ -1,1 +1,46 @@
-<p>customer-data-form works!</p>
+<form [formGroup]="dataForm">
+  <div fxFlex fxLayout="row warp" fxLayoutAlign="start start">
+
+    <div fxFlex="100%">
+      <p>{{ 'Gender' }}</p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="M">{{ 'Male' }}</mat-radio-button>
+        <mat-radio-button value="F">{{ 'Female' }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="fill" fxFlex="100%">
+      <mat-label>{{ 'First Name' }}</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fxFlex="100%">
+      <mat-label>{{ 'Last Name' }}</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fxFlex="15%" class="mr-16">
+      <mat-label>{{ 'Day' }}</mat-label>
+      <input matInput formControlName="day">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fxFlex="15%" class="mr-16">
+      <mat-label>{{ 'Month' }}</mat-label>
+      <input matInput formControlName="month">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fxFlex="15%" class="mr-16">
+      <mat-label>{{ 'Year' }}</mat-label>
+      <input matInput formControlName="year">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" fxFlex="100%">
+      <mat-label>{{ 'Nationality' }}</mat-label>
+      <mat-select formControlName="nationality">
+        <mat-option value="primary">Primary</mat-option>
+        <mat-option value="accent">Accent</mat-option>
+        <mat-option value="warn">Warn</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</form>
