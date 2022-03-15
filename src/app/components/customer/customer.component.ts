@@ -67,8 +67,10 @@ export class CustomerComponent implements OnInit, OnDestroy, AfterViewInit {
       f.form.updateValueAndValidity();
 
       if (!f.form.valid) {
-        this._snackBar.open('Please fill out all the mandatory fields', 'close', {
-          duration: 3500
+        this._snackBar.open('Some fields are missing', '', {
+          panelClass: ['warn'],
+          duration: 3500,
+          horizontalPosition: "end",
         });
         ok = false;
       }
