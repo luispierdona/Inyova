@@ -1,7 +1,10 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-
 .toolbar-bg{
   background-color: white;
+}
+.site-branding{
+  min-width: 110px;
+  margin-right: 3.5%;
 }
