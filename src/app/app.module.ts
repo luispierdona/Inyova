@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { reducers } from './state/store';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,13 @@ import { reducers } from './state/store';
     ReactiveFormsModule,
     FlexLayoutModule,
     
+    // Store
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    CustomersStoreModule,
+
+    // Material
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
@@ -47,10 +55,8 @@ import { reducers } from './state/store';
     MatRadioModule,
     MatInputModule,
     MatCardModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([]),
-    environment.production ? [] : StoreDevtoolsModule.instrument(),
-    CustomersStoreModule,
+    MatSnackBarModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

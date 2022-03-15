@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import * as CustomerReducer from '../store/customer.reducer';
 import * as CustomerActions from '../store/customer.actions';
-import { debounceTime, take, takeUntil } from 'rxjs';
+import { debounceTime, ReplaySubject, take, takeUntil } from 'rxjs';
 import { CustomerProps } from '../store/customer.models';
 
 @Component({
@@ -11,24 +11,26 @@ import { CustomerProps } from '../store/customer.models';
   templateUrl: './customer-data-form.component.html',
   styleUrls: ['./customer-data-form.component.css']
 })
-export class CustomerDataFormComponent implements OnInit {
-
+export class CustomerDataFormComponent implements OnInit, OnDestroy {
 
   dataForm: FormGroup;
   countries: string[] = ['Argentina', 'Switzerland', 'Germany', 'Italy'];
+  gender: string | null = null;
+
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
     _fb: FormBuilder,
     private store: Store<CustomerReducer.CustomerState>,
   ) {
     this.dataForm = _fb.group({
-      gender: new FormControl(null),
+      gender: new FormControl(null, [Validators.required]),
       firstName: new FormControl(null, [Validators.required]),
       lastName: new FormControl(null, [Validators.required]),
-      day: new FormControl(null),
-      month: new FormControl(null),
-      year: new FormControl(null),
-      nationality: new FormControl(null),
+      day: new FormControl(null, [Validators.required]),
+      month: new FormControl(null, [Validators.required]),
+      year: new FormControl(null, [Validators.required]),
+      nationality: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -47,7 +49,7 @@ export class CustomerDataFormComponent implements OnInit {
     this.dataForm.patchValue(customerToSave, { emitEvent: false });
 
     this.dataForm.valueChanges.pipe(
-      // takeUntil(this._unsubscribeAll),
+      takeUntil(this.destroyed$),
       debounceTime(100),
     ).subscribe(_ => this.formToSuuplierToSaveUpdate());
   }
@@ -58,6 +60,11 @@ export class CustomerDataFormComponent implements OnInit {
     this.store.dispatch(CustomerActions.SaveLocal({
       customer: customerData
     }));
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 
 }
