@@ -6,7 +6,6 @@ import { CustomerDataFormComponent } from './customer-data-form/customer-data-fo
 import { CustomerProps } from './store/customer.models';
 
 import * as CustomerReducer from './store/customer.reducer';
-import * as CustomerActions from './store/customer.actions';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({
