@@ -9,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class CustomerDataFormComponent implements OnInit {
 
   dataForm: FormGroup;
+  countries: string[] = ['Argentina', 'Switzerland', 'Germany', 'Italy'];
 
   constructor(_fb: FormBuilder) {
     this.dataForm = _fb.group({
