@@ -17,6 +17,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { StoreModule } from '@ngrx/store';
+import { CustomersStoreModule } from './components/customer/store/customer-store.module';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { reducers } from './state/store';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,10 @@ import { MatCardModule } from '@angular/material/card';
     MatRadioModule,
     MatInputModule,
     MatCardModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    CustomersStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
