@@ -24,13 +24,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { reducers } from './state/store';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LearnMoreComponent } from './components/customer/learn-more/learn-more.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     ToolBarComponent,
-    CustomerDataFormComponent
+    CustomerDataFormComponent,
+    LearnMoreComponent
   ],
   imports: [
     BrowserModule,
