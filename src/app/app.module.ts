@@ -22,7 +22,7 @@ import { CustomersStoreModule } from './components/customer/store/customer-store
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { reducers } from './state/store';
+import { metaReducers, reducers } from './state/store';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LearnMoreComponent } from './components/customer/learn-more/learn-more.component';
 
@@ -42,7 +42,7 @@ import { LearnMoreComponent } from './components/customer/learn-more/learn-more.
     FlexLayoutModule,
     
     // Store
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([]),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     CustomersStoreModule,
